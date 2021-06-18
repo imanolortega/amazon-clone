@@ -1,13 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const Product = () => {
+const Product = (props) => {
   return (
     <Container>
-      <Title>SodaStream</Title>
-      <Price>$4999</Price>
-      <Rating>⭐⭐⭐⭐⭐</Rating>
-      <Image src="https://www.sodastream.com.ar/uploads/picture/image/288/SODA_60__NEGRO.jpg" />
+      <Title>{props.title}</Title>
+      <Price>${props.price}</Price>
+      <Rating>
+        {Array(props.rating)
+          .fill()
+          .map((rating) => (
+            <span>⭐</span>
+          ))}
+      </Rating>
+      <Image src={props.image} />
       <ActionSection>
         <AddToCartButton>Add to Cart</AddToCartButton>
       </ActionSection>
