@@ -17,7 +17,6 @@ const CartItems = ({ cartItems }) => {
 };
 
 const Container = styled.div`
-  height: 300px;
   flex: 0.8;
   background-color: white;
   margin-right: 18px;
