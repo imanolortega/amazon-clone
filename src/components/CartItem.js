@@ -1,28 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartItem = () => {
+const CartItem = ({ id, item }) => {
   return (
     <Container>
       <ImageContainer>
-        <img
-          alt="Soda Stream"
-          src={
-            "https://www.sodastream.com.ar/uploads/picture/image/293/Black_3.jpg"
-          }></img>
+        <img alt="Soda Stream" src={item.image}></img>
       </ImageContainer>
 
       <CartItemInfo>
         <CartItemInfoTop>
-          <h3>Soda Stream Black</h3>
+          <h3>{item.name}</h3>
         </CartItemInfoTop>
         <CartItemInfoBottom>
-          <CartItemQuantityContainer>5</CartItemQuantityContainer>
+          <CartItemQuantityContainer>{item.quantity}</CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
 
-      <CartItemPrice>$4999</CartItemPrice>
+      <CartItemPrice>${item.price}</CartItemPrice>
     </Container>
   );
 };
@@ -39,7 +35,9 @@ const ImageContainer = styled.div`
     height: 100%;
   }
 `;
-const CartItemInfo = styled.div``;
+const CartItemInfo = styled.div`
+  flex-grow: 1;
+`;
 const CartItemInfoTop = styled.div`
   color: #007185;
   h3 {

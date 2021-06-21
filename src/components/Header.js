@@ -6,7 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-const Header = () => {
+const Header = ({ cartItems }) => {
   return (
     <Container>
       <Link to="/">
@@ -48,7 +48,7 @@ const Header = () => {
         <HeaderOptionCart>
           <Link to="/cart">
             <ShoppingBasketIcon />
-            <CardCount>4</CardCount>
+            <CardCount>{cartItems.length}</CardCount>
           </Link>
         </HeaderOptionCart>
       </HeaderNavItems>

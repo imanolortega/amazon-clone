@@ -21,14 +21,13 @@ const Home = () => {
     getProducts();
   }, []);
 
-  console.log(products);
-
   return (
     <Container>
       <Banner></Banner>
       <Content>
         {products.map((data) => (
           <Product
+            id={data.id}
             title={data.product.name}
             price={data.product.price}
             rating={data.product.rating}
