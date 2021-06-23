@@ -22,8 +22,6 @@ function App() {
     getCartItems();
   }, []);
 
-  console.log(cartItems);
-
   return (
     <Router>
       <div className="App">

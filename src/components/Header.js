@@ -7,6 +7,16 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 const Header = ({ cartItems }) => {
+  
+  const getCountCart = () => {
+    let count = 0
+    cartItems.forEach((item) => {
+      count += item.product.quantity;
+    });
+
+    return count;
+  }
+  
   return (
     <Container>
       <Link to="/">
@@ -48,7 +58,7 @@ const Header = ({ cartItems }) => {
         <HeaderOptionCart>
           <Link to="/cart">
             <ShoppingBasketIcon />
-            <CardCount>{cartItems.length}</CardCount>
+            <CardCount>{getCountCart()}</CardCount>
           </Link>
         </HeaderOptionCart>
       </HeaderNavItems>

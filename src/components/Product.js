@@ -6,7 +6,7 @@ const Product = ({ title, price, rating, image, id }) => {
   const addToCart = () => {
     const cartItem = db.collection("cartItems").doc(id);
     cartItem.get().then((doc) => {
-      console.log(doc);
+      
       if (doc.exists) {
         cartItem.update({ quantity: doc.data().quantity + 1 });
       } else {
@@ -73,6 +73,10 @@ const AddToCartButton = styled.button`
   border-width: 1px;
   padding: 8px 12px;
   cursor: pointer;
+
+  :hover{
+    background: linear-gradient(to bottom, #f7dfa5, #ddb347);
+  }
 `;
 
 export default Product;
