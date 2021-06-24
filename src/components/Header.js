@@ -6,17 +6,16 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-const Header = ({ cartItems }) => {
-  
+const Header = ({ cartItems, user }) => {
   const getCountCart = () => {
-    let count = 0
+    let count = 0;
     cartItems.forEach((item) => {
       count += item.product.quantity;
     });
 
     return count;
-  }
-  
+  };
+
   return (
     <Container>
       <Link to="/">
@@ -46,7 +45,9 @@ const Header = ({ cartItems }) => {
 
       <HeaderNavItems>
         <HeaderOption>
-          <OptionLineOne>Hello, Sign In</OptionLineOne>
+          <OptionLineOne>
+            {!user ? "Hello" : "Hello " + user.name}
+          </OptionLineOne>
           <OptionLineTwo>Account & Lists</OptionLineTwo>
         </HeaderOption>
 

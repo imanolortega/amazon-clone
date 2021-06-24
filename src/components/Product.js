@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import db from "./../firebase";
+import { db } from "./../firebase";
 
 const Product = ({ title, price, rating, image, id }) => {
   const addToCart = () => {

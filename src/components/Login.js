@@ -1,7 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import { auth, provider } from "../firebase";
 
-const Login = () => {
+const Login = ({ setUser }) => {
+  const signIn = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        let user = result.user;
+        let newUser = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        };
+        setUser(newUser);
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <Container>
       <Content>
@@ -11,7 +30,7 @@ const Login = () => {
           }
         />
         <h2>Sign in</h2>
-        <LoginButton>Sign in with Google</LoginButton>
+        <LoginButton onClick={signIn}>Sign in with Google</LoginButton>
       </Content>
     </Container>
   );
