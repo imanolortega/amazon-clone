@@ -6,7 +6,6 @@ const Product = ({ title, price, rating, image, id }) => {
   const addToCart = () => {
     const cartItem = db.collection("cartItems").doc(id);
     cartItem.get().then((doc) => {
-      
       if (doc.exists) {
         cartItem.update({ quantity: doc.data().quantity + 1 });
       } else {
@@ -23,7 +22,6 @@ const Product = ({ title, price, rating, image, id }) => {
   return (
     <Container>
       <Title>{title}</Title>
-      <Price>${price}</Price>
       <Rating>
         {Array(rating)
           .fill()
@@ -31,6 +29,7 @@ const Product = ({ title, price, rating, image, id }) => {
             <span>⭐</span>
           ))}
       </Rating>
+      <Price>${price}</Price>
       <Image src={image} />
       <ActionSection>
         <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
@@ -49,11 +48,22 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.span``;
+const Title = styled.h2`
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+`;
 const Price = styled.span`
   font-weight: 500;
+  font-size: 21px;
+  margin-top: 8px;
 `;
-const Rating = styled.div``;
+const Rating = styled.div`
+  font-size: 12px;
+  margin-top: 8px;
+`;
 const Image = styled.img`
   max-width: 200px;
   object-fit: contain;
@@ -74,7 +84,7 @@ const AddToCartButton = styled.button`
   padding: 8px 12px;
   cursor: pointer;
 
-  :hover{
+  :hover {
     background: linear-gradient(to bottom, #f7dfa5, #ddb347);
   }
 `;
