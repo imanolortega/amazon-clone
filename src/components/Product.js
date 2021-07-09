@@ -65,6 +65,7 @@ const Rating = styled.div`
   margin-top: 8px;
 `;
 const Image = styled.img`
+  margin-top: 12px;
   max-width: 200px;
   object-fit: contain;
 `;

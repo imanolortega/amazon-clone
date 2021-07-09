@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { auth } from "../firebase";
+import { SettingsInputSvideoRounded } from "@material-ui/icons";
 
-const Header = ({ cartItems, user }) => {
+const Header = ({ cartItems, user, signOut }) => {
   const getCountCart = () => {
     let count = 0;
     cartItems.forEach((item) => {
@@ -48,7 +50,9 @@ const Header = ({ cartItems, user }) => {
           <OptionLineOne>
             {!user ? "Hello" : "Hello " + user.name}
           </OptionLineOne>
-          <OptionLineTwo>Account & Lists</OptionLineTwo>
+          <OptionLineTwo onClick={signOut}>
+            {!user ? "Sign In" : "Sign Out "}
+          </OptionLineTwo>
         </HeaderOption>
 
         <HeaderOption>
@@ -96,6 +100,7 @@ const OptionLineOne = styled.div`
 const OptionLineTwo = styled.div`
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
 `;
 const HeaderSearch = styled.div`
   display: flex;
